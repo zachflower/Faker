@@ -78,9 +78,10 @@ class Lorem extends Base
      * @param integer $nbWords         around how many words the sentence should contain
      * @param boolean $variableNbWords set to false if you want exactly $nbWords returned,
      *                                  otherwise $nbWords may vary by +/-40% with a minimum of 1
+     * @param string  $terminator      character to end the sentence with
      * @return string
      */
-    public static function sentence($nbWords = 6, $variableNbWords = true)
+    public static function sentence($nbWords = 6, $variableNbWords = true, $terminator = '.')
     {
         if ($nbWords <= 0) {
             return '';
@@ -92,7 +93,21 @@ class Lorem extends Base
         $words = static::words($nbWords);
         $words[0] = ucwords($words[0]);
 
-        return implode($words, ' ') . '.';
+        return implode($words, ' ') . $terminator;
+    }
+
+    /**
+     * Generate a random question
+     *
+     * @example 'Lorem ipsum dolor sit amet.'
+     * @param integer $nbWords         around how many words the question should contain
+     * @param boolean $variableNbWords set to false if you want exactly $nbWords returned,
+     *                                  otherwise $nbWords may vary by +/-40% with a minimum of 1
+     * @return string
+     */
+    public static function question($nbWords = 6, $variableNbWords = true)
+    {
+        return static::sentence($nbWords, $variableNbWords, '?');
     }
 
     /**

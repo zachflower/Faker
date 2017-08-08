@@ -52,8 +52,10 @@ namespace Faker;
  * @property string $word
  * @property string|array $words
  * @method string|array words($nb = 3, $asText = false)
+ * @property string $question
+ * @method string question($nbWords = 6, $variableNbWords = true)
  * @property string $sentence
- * @method string sentence($nbWords = 6, $variableNbWords = true)
+ * @method string sentence($nbWords = 6, $variableNbWords = true, $terminator = '.')
  * @property string|array $sentences
  * @method string|array sentences($nb = 3, $asText = false)
  * @property string $paragraph

@@ -57,6 +57,13 @@ class LoremTest extends \PHPUnit_Framework_TestCase
         $this->assertGreaterThanOrEqual(1, count(explode(' ', $sentence)));
     }
 
+    public function testSentencesEndInDefinedTerminator()
+    {
+        $this->assertRegExp('/^[a-z ]+\.$/i', Lorem::sentence());
+        $this->assertRegExp('/^[a-z ]+\?$/i', Lorem::sentence(6, true, '?'));
+        $this->assertRegExp('/^[a-z ]+\?$/i', Lorem::question());
+    }
+
     public function testParagraphWithPositiveNbSentencesReturnsAtLeastOneWord()
     {
         $paragraph = Lorem::paragraph(1);
